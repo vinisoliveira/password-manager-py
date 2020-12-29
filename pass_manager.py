@@ -31,6 +31,11 @@ def insert_password(service, user, password):
     ''')
     conn.commit()
 
+def delete(x):
+    cursor.execute('''
+        DELETE FROM users WHERE service = ?''', x)
+    conn.commit()
+
 def show_services():
     cursor.execute('''
             SELECT service FROM users;
@@ -67,7 +72,7 @@ def layout():
         [sg.Text('═────────────◇────────────═')],
         [sg.Text('Serviços salvos')],
         [sg.Listbox(service , size = (32,15), key = '-BOX-')],
-        [sg.Button('Sair')]
+        [sg.Button('Deletar'), sg.Text('\t  \t'),sg.Button('Sair')]
     ]
     window = sg.Window('Password Manager', layout, finalize= True)
     while True:
@@ -85,6 +90,17 @@ def layout():
             window.find_element('-USER-').Update('')
             window.find_element('-PASSWORD-').Update('')
             window.find_element('-BOX-').Update(service)
+
+        if button == 'Deletar':
+            try:
+                if service:
+                    x = values['-BOX-'][0]
+                    delete(x)
+                    service = read_task()
+                    window.find_element('-BOX-').Update(service)
+            except IndexError:
+                Popup('Nenhum serviço selecionado')
+
         if button == 'Sair':
             window.exit()
         if button == sg.WIN_CLOSED:
