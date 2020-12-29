@@ -86,7 +86,7 @@ def layout():
             window.find_element('-PASSWORD-').Update('')
             window.find_element('-BOX-').Update(service)
         if button == 'Sair':
-            window.exit()
+           break
         if button == sg.WIN_CLOSED:
             break
         
