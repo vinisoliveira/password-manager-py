@@ -18,6 +18,12 @@ cursor.execute('''
     );
 ''')
 
+def read_task():
+    cursor.execute('''SELECT service FROM users''')
+    data = cursor.fetchall()
+    conn.commit()
+    return data
+
 def insert_password(service, user, password):
     cursor.execute(f'''
             INSERT INTO users (service, username, password)
@@ -52,6 +58,7 @@ def front():
         window.exit()
         
 def layout():
+    service = read_task()
     layout = [
         [sg.Text('Serviço '), sg.Input('', size = (25,1), key = '-SERVICE-')],
         [sg.Text('Usúario'), sg.Input('', size = (25,1), key = '-USER-')],
@@ -59,7 +66,7 @@ def layout():
         [sg.Button('Enviar')],
         [sg.Text('═────────────◇────────────═')],
         [sg.Text('Serviços salvos')],
-        [sg.Listbox('SERVIÇOS', size = (32,15), key = '-BOX-')],
+        [sg.Listbox(service , size = (32,15), key = '-BOX-')],
         [sg.Button('Sair')]
     ]
     window = sg.Window('Password Manager', layout, finalize= True)
@@ -72,9 +79,12 @@ def layout():
             if service and user and password != '':
                 insert_password(service, user, password)
 
+            service = read_task()
+
             window.find_element('-SERVICE-').Update('')
             window.find_element('-USER-').Update('')
             window.find_element('-PASSWORD-').Update('')
+            window.find_element('-BOX-').Update(service)
         if button == 'Sair':
             window.exit()
         if button == sg.WIN_CLOSED:
