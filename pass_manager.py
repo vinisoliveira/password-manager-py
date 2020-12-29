@@ -77,7 +77,8 @@ def layout():
             window.find_element('-PASSWORD-').Update('')
         if button == 'Sair':
             window.exit()
-        if WIN_CLOSED:
+        if button == sg.WIN_CLOSED:
             break
+        
 
 front()
