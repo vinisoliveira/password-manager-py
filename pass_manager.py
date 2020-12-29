@@ -21,7 +21,7 @@ cursor.execute('''
 def insert_password(service, user, password):
     cursor.execute(f'''
             INSERT INTO users (service, username, password)
-            VALUES ('{service}', '{user}', {password})
+            VALUES ('{service}', '{user}', '{password}')
     ''')
     conn.commit()
 
