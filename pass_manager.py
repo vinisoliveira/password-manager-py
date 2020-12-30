@@ -18,12 +18,14 @@ cursor.execute('''
     );
 ''')
 
+#EXIBIR OS SERVIÇOS NA LISTBOX
 def read_task():
     cursor.execute('''SELECT service FROM users''')
     data = cursor.fetchall()
     conn.commit()
     return data
 
+#FUNÇÃO PARA INSERIR OS DADOS NO BANCO DE DADOS
 def insert_password(service, user, password):
     cursor.execute(f'''
             INSERT INTO users (service, username, password)
@@ -31,6 +33,7 @@ def insert_password(service, user, password):
     ''')
     conn.commit()
 
+#FUNÇÃO QUE DELETA UM SERVIÇO
 def delete(x):
     cursor.execute('''
         DELETE FROM users WHERE service = ?''', x)
@@ -53,7 +56,7 @@ def front():
     element_justification= ('center'))
     button, values = window.Read()
     if values['-PASS-'] != master_pass and button == 'Entrar':
-        sg.Popup('Senha Incorreta')
+        sg.popup_error('Senha Incorreta')
         window.close()
         front()
     elif values['-PASS-'] == master_pass and button == 'Entrar':
@@ -72,7 +75,7 @@ def layout():
         [sg.Text('═────────────◇────────────═')],
         [sg.Text('Serviços salvos')],
         [sg.Listbox(service , size = (32,15), key = '-BOX-')],
-        [sg.Button('Deletar'), sg.Text('\t  \t'),sg.Button('Sair')]
+        [sg.Button('Deletar'), sg.Button('Recuperar'),sg.Text('\t'),sg.Button('Sair')]
 
     ]
 
@@ -94,6 +97,7 @@ def layout():
             window.find_element('-BOX-').Update(service)
 
         if button == 'Deletar':
+            sg.popup_yes_no('Tem Certeza?')
             try:
                 if service:
                     x = values['-BOX-'][0]
