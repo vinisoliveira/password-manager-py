@@ -73,6 +73,7 @@ def layout():
         [sg.Text('Serviços salvos')],
         [sg.Listbox(service , size = (32,15), key = '-BOX-')],
         [sg.Button('Deletar'), sg.Text('\t  \t'),sg.Button('Sair')]
+
     ]
 
     window = sg.Window('Password Manager', layout, finalize= True)
