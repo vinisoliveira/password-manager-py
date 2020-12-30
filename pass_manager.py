@@ -72,7 +72,7 @@ def layout():
         [sg.Text('═────────────◇────────────═')],
         [sg.Text('Serviços salvos')],
         [sg.Listbox(service , size = (32,15), key = '-BOX-')],
-        [sg.Button('Deletar'), sg.Text('\t  \t'),sg.Button('Sair')]
+        [sg.Button('Deletar'), sg.Button('Recuperar'),sg.Text('\t'),sg.Button('Sair')]
 
     ]
 
