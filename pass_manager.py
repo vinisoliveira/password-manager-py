@@ -103,10 +103,9 @@ def layout():
             except IndexError:
                 Popup('Nenhum serviço selecionado')
 
-        if button == 'Sair':
-            break
-        if button == sg.WIN_CLOSED:
-            break
+        if button == 'Sair' or button == sg.WIN_CLOSED:
+           break
+
         
 
 front()
