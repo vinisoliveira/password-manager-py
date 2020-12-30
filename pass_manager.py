@@ -18,12 +18,14 @@ cursor.execute('''
     );
 ''')
 
+#EXIBIR OS SERVIÇOS NA LISTBOX
 def read_task():
     cursor.execute('''SELECT service FROM users''')
     data = cursor.fetchall()
     conn.commit()
     return data
 
+#FUNÇÃO PARA INSERIR OS DADOS NO BANCO DE DADOS
 def insert_password(service, user, password):
     cursor.execute(f'''
             INSERT INTO users (service, username, password)
@@ -31,6 +33,7 @@ def insert_password(service, user, password):
     ''')
     conn.commit()
 
+#FUNÇÃO QUE DELETA UM SERVIÇO
 def delete(x):
     cursor.execute('''
         DELETE FROM users WHERE service = ?''', x)
