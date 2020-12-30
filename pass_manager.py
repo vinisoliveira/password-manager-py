@@ -60,7 +60,7 @@ def front():
         window.close()
         layout()
     elif button == 'Sair':
-        window.exit()
+        window.close(); del window
         
 def layout():
     service = read_task()
@@ -73,7 +73,9 @@ def layout():
         [sg.Text('Serviços salvos')],
         [sg.Listbox(service , size = (32,15), key = '-BOX-')],
         [sg.Button('Deletar'), sg.Text('\t  \t'),sg.Button('Sair')]
+
     ]
+
     window = sg.Window('Password Manager', layout, finalize= True)
     while True:
         button, values = window.Read()
@@ -104,4 +106,5 @@ def layout():
         if button == 'Sair' or button == sg.WIN_CLOSED:
            break
 
+        
 front()
