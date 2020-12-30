@@ -56,7 +56,7 @@ def front():
     element_justification= ('center'))
     button, values = window.Read()
     if values['-PASS-'] != master_pass and button == 'Entrar':
-        sg.Popup('Senha Incorreta')
+        sg.popup_error('Senha Incorreta')
         window.close()
         front()
     elif values['-PASS-'] == master_pass and button == 'Entrar':
@@ -97,6 +97,7 @@ def layout():
             window.find_element('-BOX-').Update(service)
 
         if button == 'Deletar':
+            sg.popup_yes_no('Tem Certeza?')
             try:
                 if service:
                     x = values['-BOX-'][0]
