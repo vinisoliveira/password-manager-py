@@ -107,5 +107,4 @@ def layout():
            break
 
         
-
 front()
