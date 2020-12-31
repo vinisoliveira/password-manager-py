@@ -42,7 +42,7 @@ def delete(x):
 
 def show_services():
     cursor.execute('''
-            SELECT service FROM users;
+            SELECT service, username, password FROM users;
     ''')
     for service, user, password in cursor.fetchall():
         print(service, user, password)
@@ -98,6 +98,9 @@ def layout():
             window.find_element('-USER-').Update('')
             window.find_element('-PASSWORD-').Update('')
             window.find_element('-BOX-').Update(service)
+        
+        if button == 'Recuperar':  
+            Popup(show_services(), service)
 
         if button == 'Deletar':
             sg.popup_yes_no('Tem Certeza?') #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA
