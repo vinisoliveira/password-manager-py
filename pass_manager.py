@@ -6,6 +6,7 @@ from PySimpleGUI.PySimpleGUI import Button, Popup, WIN_CLOSED
 sg.theme('random')
 master_pass = '123'
 
+#CONEXÃO COM O BANCO DE DADOS
 conn = sqlite3.connect('Password.db')
 
 cursor = conn.cursor()
@@ -46,6 +47,7 @@ def show_services():
     for service, user, password in cursor.fetchall():
         print(service, user, password)
 
+#TELA INICIAL DO PROGRAMA(ENTRADA DA SENHA)
 def front():
     flayout = [
         [sg.Text('Digite sua senha:')],
@@ -65,6 +67,7 @@ def front():
     elif button == 'Sair':
         window.close(); del window
         
+ #TELA DE INTERAÇÃO COM O PROGRAMA(REGISTRO E EXCLUSÃO DE DADOS)
 def layout():
     service = read_task()
     layout = [
