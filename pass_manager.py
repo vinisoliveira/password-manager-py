@@ -100,7 +100,7 @@ def layout():
             window.find_element('-BOX-').Update(service)
 
         if button == 'Deletar':
-            sg.popup_yes_no('Tem Certeza?')
+            sg.popup_yes_no('Tem Certeza?') #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA
             try:
                 if service:
                     x = values['-BOX-'][0]
