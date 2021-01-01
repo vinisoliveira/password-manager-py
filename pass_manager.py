@@ -100,7 +100,7 @@ def layout():
             print('')
 
         if button == 'Deletar':
-             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA          
+             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO           
             try:
                 if service:
                     x = values['-BOX-'][0]
