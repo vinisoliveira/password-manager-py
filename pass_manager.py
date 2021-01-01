@@ -81,7 +81,7 @@ def layout():
 
     window = sg.Window('Password Manager', layout, finalize= True)
     while True:
-        button, values = window.Read()
+        button, values = window.Read(timeout=100)
         if button == 'Enviar':
             service = values['-SERVICE-']
             user = values['-USER-']
@@ -96,8 +96,11 @@ def layout():
             window.find_element('-PASSWORD-').Update('')
             window.find_element('-BOX-').Update(service)
 
+        if button == 'Recuperar': 
+            print('')
+
         if button == 'Deletar':
-            sg.popup_yes_no('Tem Certeza?')
+             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA          
             try:
                 if service:
                     x = values['-BOX-'][0]
