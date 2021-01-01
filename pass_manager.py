@@ -106,7 +106,7 @@ def layout():
             print('')
 
         if button == 'Deletar':
-             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO           
+             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
             sg.popup_yes_no('Tem Certeza?')
             try:
                 if service:
