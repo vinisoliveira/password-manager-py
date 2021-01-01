@@ -107,7 +107,7 @@ def layout():
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
-            sg.popup_yes_no('Tem Certeza?')
+            sg.popup_yes_no('Tem Certeza?') #ESTOU PROCURANDO COMO FAZER ISSO NA DOCUMENTAÇÃO DO PSG
             try:
                 if service:
                     x = values['-BOX-'][0]
