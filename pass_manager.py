@@ -44,7 +44,7 @@ def delete(x):
 def show_services(x):
     cursor.execute('''
             SELECT service, username, password FROM users;
-    ''', x)
+    ''')
     for service, user, password in cursor.fetchall():
         print(service, user, password)
 
