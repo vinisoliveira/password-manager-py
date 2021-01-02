@@ -41,7 +41,7 @@ def delete(x):
     conn.commit()
 
 #VOU TENTAR ENCAIXAR ESSA FUNÇÃO PARA QUE O USUÁRIO CONSIGA RECUPERAR UMA SENHA
-def show_services(x):
+def show_services():
     cursor.execute('''
             SELECT service, username, password FROM users;
     ''')
@@ -121,5 +121,4 @@ def layout():
            break
 
 
-        
 front()
