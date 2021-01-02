@@ -4,7 +4,7 @@ import sqlite3
 from PySimpleGUI.PySimpleGUI import Button, Popup, WIN_CLOSED
 
 sg.theme('random')
-master_pass = '1234'
+master_pass = '123'
 
 #CONEXÃO COM O BANCO DE DADOS
 conn = sqlite3.connect('Password.db')
