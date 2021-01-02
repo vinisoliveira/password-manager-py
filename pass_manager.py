@@ -105,8 +105,6 @@ def layout():
             x = ['-BOX-'][0]
             show_services(x)
 
-        if button == 'Recuperar': 
-            
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
