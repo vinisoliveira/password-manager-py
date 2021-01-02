@@ -6,6 +6,7 @@ from PySimpleGUI.PySimpleGUI import Button, Popup, WIN_CLOSED
 sg.theme('random')
 master_pass = '123'
 
+#CONEXÃO COM O BANCO DE DADOS
 conn = sqlite3.connect('Password.db')
 
 cursor = conn.cursor()
@@ -39,17 +40,20 @@ def delete(x):
         DELETE FROM users WHERE service = ?''', x)
     conn.commit()
 
+#VOU TENTAR ENCAIXAR ESSA FUNÇÃO PARA QUE O USUÁRIO CONSIGA RECUPERAR UMA SENHA
 def show_services():
     cursor.execute('''
-            SELECT service FROM users;
+            SELECT service, username, password FROM users;
     ''')
     for service, user, password in cursor.fetchall():
         print(service, user, password)
 
+#TELA INICIAL DO PROGRAMA(ENTRADA DA SENHA)
 def front():
     flayout = [
         [sg.Text('Digite sua senha:')],
-        [sg.Input('', key= '-PASS-'), sg.Button('Entrar'), sg.Button('Sair')]
+        [sg.Input('', key= '-PASS-'), sg.Button('Entrar'), sg.Button('Sair')],
+        [sg.Text('Tema'),sg.Combo(sg.theme_list(), size=(20, 20), key='-THEME-')]
     ]
 
     window = sg.Window('Passwords Manager', flayout, size=(500, 100),
@@ -65,7 +69,9 @@ def front():
     elif button == 'Sair':
         window.close(); del window
         
+ #TELA DE INTERAÇÃO COM O PROGRAMA(REGISTRO E EXCLUSÃO DE DADOS)
 def layout():
+    sg.theme('values.["-THEME-"]')
     service = read_task()
     layout = [
         [sg.Text('Serviço '), sg.Input('', size = (25,1), key = '-SERVICE-')],
@@ -95,12 +101,14 @@ def layout():
             window.find_element('-USER-').Update('')
             window.find_element('-PASSWORD-').Update('')
             window.find_element('-BOX-').Update(service)
+        
+        if button == 'Recuperar':
+            show_services()
 
-        if button == 'Recuperar': 
-            print('')
 
         if button == 'Deletar':
-             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO           
+             #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
+            sg.popup_yes_no('Tem Certeza?') #ESTOU PROCURANDO NA DOCUMENTAÇÃO DO PSG COMO FAZER ISSO 
             try:
                 if service:
                     x = values['-BOX-'][0]
@@ -110,8 +118,9 @@ def layout():
             except IndexError:
                 Popup('Nenhum serviço selecionado')
 
+
         if button == 'Sair' or button == sg.WIN_CLOSED:
            break
 
-        
+
 front()
