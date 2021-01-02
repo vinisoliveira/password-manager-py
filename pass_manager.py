@@ -41,10 +41,10 @@ def delete(x):
     conn.commit()
 
 #VOU TENTAR ENCAIXAR ESSA FUNÇÃO PARA QUE O USUÁRIO CONSIGA RECUPERAR UMA SENHA
-def show_services():
+def show_services(x):
     cursor.execute('''
             SELECT service, username, password FROM users;
-    ''')
+    ''', x)
     for service, user, password in cursor.fetchall():
         print(service, user, password)
 
@@ -102,10 +102,11 @@ def layout():
         
         if button == 'Recuperar': 
             Popup(service)
+            x = ['-BOX-'][0]
+            show_services(x)
 
         if button == 'Recuperar': 
-            values['-BOX-'][0]
-            show_services()
+            
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
