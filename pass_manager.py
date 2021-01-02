@@ -104,7 +104,7 @@ def layout():
         
         if button == 'Recuperar':
             show_services()
-
+            
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
@@ -117,7 +117,6 @@ def layout():
                     window.find_element('-BOX-').Update(service)
             except IndexError:
                 Popup('Nenhum serviço selecionado')
-
 
         if button == 'Sair' or button == sg.WIN_CLOSED:
            break
