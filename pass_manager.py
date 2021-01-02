@@ -82,7 +82,6 @@ def layout():
         [sg.Text('Serviços salvos')],
         [sg.Listbox(service , size = (32,15), key = '-BOX-')],
         [sg.Button('Deletar'), sg.Button('Recuperar'),sg.Text('\t'),sg.Button('Sair')]
-
     ]
 
     window = sg.Window('Password Manager', layout, finalize= True)
@@ -104,7 +103,6 @@ def layout():
         
         if button == 'Recuperar':
             show_services()
-            
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
