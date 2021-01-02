@@ -104,7 +104,8 @@ def layout():
             Popup(service)
 
         if button == 'Recuperar': 
-            print('')
+            values['-BOX-'][0]
+            show_services()
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
