@@ -100,10 +100,8 @@ def layout():
             window.find_element('-PASSWORD-').Update('')
             window.find_element('-BOX-').Update(service)
         
-        if button == 'Recuperar': 
-            Popup(service)
-            x = ['-BOX-'][0]
-            show_services(x)
+        if button == 'Recuperar':
+            show_services()
 
 
         if button == 'Deletar':
