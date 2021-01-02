@@ -52,7 +52,8 @@ def show_services():
 def front():
     flayout = [
         [sg.Text('Digite sua senha:')],
-        [sg.Input('', key= '-PASS-'), sg.Button('Entrar'), sg.Button('Sair')]
+        [sg.Input('', key= '-PASS-'), sg.Button('Entrar'), sg.Button('Sair')],
+        [sg.Text('Tema'),sg.Combo(sg.theme_list(), size=(20, 20), key='-THEME-')]
     ]
 
     window = sg.Window('Passwords Manager', flayout, size=(500, 100),
@@ -70,6 +71,7 @@ def front():
         
  #TELA DE INTERAÇÃO COM O PROGRAMA(REGISTRO E EXCLUSÃO DE DADOS)
 def layout():
+    sg.theme('values.["-THEME-"]')
     service = read_task()
     layout = [
         [sg.Text('Serviço '), sg.Input('', size = (25,1), key = '-SERVICE-')],
@@ -106,7 +108,7 @@ def layout():
 
         if button == 'Deletar':
              #AINDA PRECISA FAZER COM QUE ESSA MENSAGEM DE CONFIRMAÇÃO FUNCIONE COMO DEVERIA   
-            sg.popup_yes_no('Tem Certeza?') #ESTOU PROCURANDO NA DOCUMENTAÇÃO DO PSG COMO FAZER ISSO
+            sg.popup_yes_no('Tem Certeza?') #ESTOU PROCURANDO NA DOCUMENTAÇÃO DO PSG COMO FAZER ISSO 
             try:
                 if service:
                     x = values['-BOX-'][0]
